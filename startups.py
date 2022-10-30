@@ -17,8 +17,8 @@ options.add_argument("start-maximized")
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option('useAutomationExtension', False)
 _browser = webdriver.Chrome(options=options, executable_path=chrome_driver)
-usr='max.knowles@squadformers.com'
-psw='_i8j92fvLNfv9R!'
+usr=st.secrets["usr"]
+psw=st.secrets["psw"]
 
 @st.experimental_singleton
 def loginDealroom(_browser,usr,psw):
