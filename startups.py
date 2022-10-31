@@ -16,7 +16,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 #service = webdriver.Chrome(ChromeDriverManager().install())
 service = Service(ChromeDriverManager().install())
 options = webdriver.ChromeOptions()
-#options.add_argument('--headless')
+options.add_argument('--headless')
 #options.add_argument('--no-sandbox')
 options.add_argument("start-maximized")
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
