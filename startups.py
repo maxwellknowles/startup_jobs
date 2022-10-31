@@ -9,9 +9,14 @@ from selenium.webdriver.common.by import By
 import time
 import os
 import pandas as pd
+import chromedriver_autoinstaller
 
-chrome_driver = 'https://github.com/maxwellknowles/startup_jobs/blob/acfbad05b1aed2154f1e00dd79b52ba7be4862e9/chromedriver'
+chromedriver_autoinstaller.install()
+
 options = webdriver.ChromeOptions() 
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument("--disable-infobars")
+chrome_options.add_argument('--disable-dev-shm-usage')
 options.add_argument("start-maximized")
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option('useAutomationExtension', False)
