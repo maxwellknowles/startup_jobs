@@ -10,6 +10,7 @@ import time
 import os
 import pandas as pd
 import requests
+import base64
 
 
 req = requests.get('https://github.com/maxwellknowles/startup_jobs/raw/main/chromedriver')
