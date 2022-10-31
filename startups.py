@@ -12,6 +12,11 @@ import os
 import pandas as pd
 from webdriver_manager.chrome import ChromeDriverManager
 
+@st.experimental_singleton
+def installff():
+  os.system('sbase install geckodriver')
+  os.system('ln -s /home/appuser/venv/lib/python3.7/site-packages/seleniumbase/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
+
 #chrome_driver = os.path.abspath(os.path.dirname(__file__)) + '/chromedriver'
 #service = webdriver.Chrome(ChromeDriverManager().install())
 service = Service(ChromeDriverManager().install())
