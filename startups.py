@@ -31,6 +31,7 @@ usr=st.secrets['usr']
 psw=st.secrets['psw']
 
 #@st.experimental_singleton
+@st.cache(suppress_st_warning=True, allow_output_mutation=True, ttl=6000)
 def loginDealroom(_browser,usr,psw):
     # Go to Dealroom Login page
     _browser.get('https://app.dealroom.co/dashboard')
