@@ -20,7 +20,8 @@ chrome_options.add_argument('--disable-dev-shm-usage')
 options.add_argument("start-maximized")
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option('useAutomationExtension', False)
-_browser = webdriver.Chrome(options=options, executable_path=chrome_driver)
+#_browser = webdriver.Chrome(options=options, executable_path=chrome_driver)
+_browser = webdriver.Chrome(options=options)
 usr=st.secrets["usr"]
 psw=st.secrets["psw"]
 
