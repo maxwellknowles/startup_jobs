@@ -11,7 +11,7 @@ import os
 import pandas as pd
 
 
-chrome_driver = os.path.abspath(os.path.dirname(__file__)) + '/chromedriver'
+chrome_driver = '*/chromedriver'
 options = webdriver.ChromeOptions() 
 options.add_argument("start-maximized")
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
