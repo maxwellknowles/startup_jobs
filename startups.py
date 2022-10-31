@@ -3,7 +3,7 @@ import streamlit as st
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 #from selenium.webdriver.support import expected_conditions as EC
 #from selenium.webdriver.support.ui import WebDriverWait
 #from selenium.webdriver.common.action_chains import ActionChains
@@ -13,17 +13,17 @@ import pandas as pd
 from webdriver_manager.chrome import ChromeDriverManager
 
 #chrome_driver = os.path.abspath(os.path.dirname(__file__)) + '/chromedriver'
-#_browser = webdriver.Chrome(ChromeDriverManager().install())
-options = webdriver.ChromeOptions() 
-options.add_argument('--headless')
-options.add_argument('--no-sandbox')
+#service = webdriver.Chrome(ChromeDriverManager().install())
+service = Service(ChromeDriverManager().install())
+options = webdriver.ChromeOptions()
+#options.add_argument('--headless')
+#options.add_argument('--no-sandbox')
 options.add_argument("start-maximized")
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option('useAutomationExtension', False)
-#_browser = webdriver.Chrome(options=options, executable_path=ChromeDriverManager().install())
-_browser = webdriver.Chrome(chrome_options=options)
-usr=st.secrets["usr"]
-psw=st.secrets["psw"]
+_browser = webdriver.Chrome(options=options, service=service)
+usr=st.secrets['usr']
+psw=st.secrets['psw']
 
 @st.experimental_singleton
 def loginDealroom(_browser,usr,psw):
@@ -46,6 +46,7 @@ def loginDealroom(_browser,usr,psw):
     return _browser
 
 browser=loginDealroom(_browser,usr,psw)
+st.write("Signed in and ready to go...")
 
 def getJobInfo(j):
     title = ''
@@ -65,10 +66,10 @@ def getDealroomJobs():
     time.sleep(1)
     browser.maximize_window()
     time.sleep(7)
-    html = browser.find_element(By.CLASS_NAME, 'infinite-grid')
-    html.send_keys(Keys.END)
+    #html = browser.find_element(By.CLASS_NAME, 'infinite-grid')
+    #html.send_keys(Keys.END)
     #actions = ActionChains(browser)
-    #browser.execute_script("window.scrollTo(0, 40000);")
+    browser.execute_script("window.scrollTo(0, 40000);")
     browser.execute_script("scroll(0, 3000)")
     jobs = browser.find_elements(By.CLASS_NAME,'infinite-grid-list-item')
     st.write("Series B startup roles: ", len(jobs))
@@ -92,6 +93,7 @@ def getDealroomJobs():
     df = pd.DataFrame(l,columns=['title','company','location','venture funding'])
     #df = pd.DataFrame(jobData[1:],columns=jobData[0])
     return df
+
 jobs = getDealroomJobs()
 st.table(jobs)
 jobs_consolidated = jobs.groupby("company").agg({"title": 'count'})
