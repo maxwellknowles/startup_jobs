@@ -40,7 +40,6 @@ def loginDealroom(_browser,usr,psw):
     _browser.find_element(By.CSS_SELECTOR, "button[data-testid='user-menu-button-login']").click()
     #browser.get('https://accounts.dealroom.co/login?state=hKFo2SBZMDc2bnE5d2ZyMW56RXRaQ3BlU2w3dmxVa1FHRVhieqFupWxvZ2luo3RpZNkgV3JpQ1NCdmliRWFXc3d3XzEwenpHRTZ2VkRBbTN0S0KjY2lk2SAyYlM4WE9zY0F6cGw3Z0lZT0cxZTVEaHVmZjVPOGd0Mw&client=2bS8XOscAzpl7gIYOG1e5Dhuff5O8gt3&protocol=oauth2&audience=https%3A%2F%2Fapi.dealroom.co%2Fapi%2Fv2&redirect_uri=https%3A%2F%2Fapp.dealroom.co&scope=openid%20profile%20email&response_type=code&response_mode=query&nonce=d0ttcWJMZTBzVU1pVE1ILTdDTzg3Zm4xM3l1bzlPZC1qV3EzTFE1bW85cQ%3D%3D&code_challenge=feGVFv_6zPOm9tDeaT_aP2UZhqjJfMU-lY73b_Zns30&code_challenge_method=S256&auth0Client=eyJuYW1lIjoiYXV0aDAtcmVhY3QiLCJ2ZXJzaW9uIjoiMS45LjAifQ%3D%3D')
     time.sleep(3)
-    st.write("Signing in with email and password")
     _browser.find_element(By.ID,'1-email').send_keys(usr)
     time.sleep(1)
     _browser.find_element(By.ID,'1-password').send_keys(psw)
