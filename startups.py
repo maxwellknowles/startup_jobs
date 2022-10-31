@@ -9,9 +9,10 @@ from selenium.webdriver.common.by import By
 import time
 import os
 import pandas as pd
+import requests
 
 
-chrome_driver = 'https://github.com/maxwellknowles/startup_jobs/raw/main/chromedriver'
+chrome_driver = requests.get('https://github.com/maxwellknowles/startup_jobs/raw/main/chromedriver')
 options = webdriver.ChromeOptions() 
 options.add_argument("start-maximized")
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
