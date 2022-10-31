@@ -31,7 +31,6 @@ usr=st.secrets['usr']
 psw=st.secrets['psw']
 
 #@st.experimental_singleton
-@st.cache(suppress_st_warning=True, allow_output_mutation=True, ttl=6000)
 def loginDealroom(_browser,usr,psw):
     # Go to Dealroom Login page
     _browser.get('https://app.dealroom.co/dashboard')
@@ -66,7 +65,6 @@ def getJobInfo(j):
     company_funding = j.find_element(By.CLASS_NAME,'entity-overview__heading__strong').text
     return [title,company,location,company_funding]
     
-@st.cache(suppress_st_warning=True, allow_output_mutation=True, ttl=3600)
 def getDealroomJobs():
     browser.get('https://app.dealroom.co/jobs/f/company_status/anyof_operational/employees_max/anyof_500/employees_min/anyof_60/founder_strength/anyof_Has%20exceptional%20founder/job_locations/anyof_United%20States_Remote/job_types/anyof_Backend%20development_Data%20Science%20%26%20Engineering_Design_Android%20Development_iOS%20Development_Full-stack%20development_Frontend%20development_DevOps/last_funding_month/anyof_jul_aug_sep_oct_nov_dec/last_funding_round/anyof_SERIES%20B/last_funding_year/anyof_2022/vc_backed/anyof_VC%20Backed?sort=&row_index=100')
     time.sleep(1)
