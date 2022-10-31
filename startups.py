@@ -12,7 +12,8 @@ import pandas as pd
 import requests
 
 
-chrome_driver = requests.get('https://github.com/maxwellknowles/startup_jobs/raw/main/chromedriver')
+req = requests.get('https://github.com/maxwellknowles/startup_jobs/raw/main/chromedriver')
+chrome_driver = base64.decodestring(req['content'])
 options = webdriver.ChromeOptions() 
 options.add_argument("start-maximized")
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
