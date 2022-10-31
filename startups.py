@@ -11,9 +11,6 @@ import time
 import os
 import pandas as pd
 from webdriver_manager.chrome import ChromeDriverManager
-import libnss3
-import libgconf_2_4
-import libfontconfig1
 
 #chrome_driver = os.path.abspath(os.path.dirname(__file__)) + '/chromedriver'
 _browser = webdriver.Chrome(ChromeDriverManager().install())
