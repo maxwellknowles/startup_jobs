@@ -30,7 +30,7 @@ _browser = webdriver.Chrome(options=options, service=service)
 usr=st.secrets['usr']
 psw=st.secrets['psw']
 
-#@st.experimental_singleton
+@st.experimental_singleton
 def loginDealroom(_browser,usr,psw):
     # Go to Dealroom Login page
     _browser.get('https://app.dealroom.co/dashboard')
